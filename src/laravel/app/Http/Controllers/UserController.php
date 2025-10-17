@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\User;
 
+// dummy comment to chec the gpg key
+
 class UserController extends Controller
 {
     public function index()
