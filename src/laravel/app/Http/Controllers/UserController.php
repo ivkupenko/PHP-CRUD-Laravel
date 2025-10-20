@@ -2,10 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\Models\User;
-
-// dummy comment to chec the gpg key
+use App\Http\Requests\StoreUserDataRequest;
+use App\Http\Requests\UpdateUserDataRequest;
 
 class UserController extends Controller
 {
@@ -20,16 +19,9 @@ class UserController extends Controller
         return view('users.create');
     }
 
-    public function store(Request $request)
+    public function store(StoreUserDataRequest $request)
     {
-        $validated = $request->validate([
-            'name' => 'required',
-            'email' => 'required|email',
-            'location' => 'required',
-            'phone' => 'required',
-        ]);
-
-        $newUser = User::create($validated);
+        User::create($request->validated());
 
         return redirect(route('users.index'));
     }
@@ -39,16 +31,9 @@ class UserController extends Controller
         return view('users.edit', ['user' => $user]);
     }
 
-    public function update(User $user, Request $request)
+    public function update(User $user, UpdateUserDataRequest $request)
     {
-        $validated = $request->validate([
-            'name' => 'required',
-            'email' => 'required|email',
-            'location' => 'required',
-            'phone' => 'required',
-        ]);
-
-        $user->update($validated);
+        $user->update($request->validated());
 
         return redirect(route('users.index'))->with('success', 'User updated!');
     }
