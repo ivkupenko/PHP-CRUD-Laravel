@@ -2,15 +2,22 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Http\Request;
 use App\Models\User;
 use App\Http\Requests\StoreUserDataRequest;
 use App\Http\Requests\UpdateUserDataRequest;
 
 class UserController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        $users = User::orderBy('id', 'asc')->paginate(10);;
+        $query = User::query();
+
+        if ($sex = $request->input('sex')) {
+            $query->where('sex', $sex);
+        }
+
+        $users = $query->orderBy('id', 'asc')->paginate(10)->appends($request->query());
         return view('users.index', ['users' => $users]);
     }
 
