@@ -13,11 +13,11 @@
             @endif
 
             <form method="GET" action="{{ route('products.list') }}" class="mb-3 d-flex align-items-center gap-2">
-                <div class="btn-group">
-                    <input type="text" name="search" value="{{ request('search') }}"
-                        class="form-control form-control-sm" placeholder="Search by name" style="max-width: 250px;">
+                <input type="text" name="name_filter" value="{{ request('name_filter') }}"
+                    class="form-control form-control-sm" placeholder="Search by name" style="max-width: 250px;">
 
-                    <button type="submit" class="btn btn-success btn-sm">Search</button>
+                <button type="submit" class="btn btn-success btn-sm">Search</button>
+            <a href="{{ route('products.list') }}" class="btn btn-secondary btn-sm">Reset Filter</a>
             </form>
         </div>
         <table class="table table-hover">
