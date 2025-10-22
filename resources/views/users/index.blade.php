@@ -3,7 +3,9 @@
 @section('content')
     <div class="container w-100">
         <h1>Users list</h1>
-        <a href="{{ route('users.create') }}" class="btn btn-primary">Register new user</a><br><br>
+        <a href="{{ route('users.create') }}" class="btn btn-primary">Register new user</a>
+
+        <a href="{{ route('products.list') }}" class="btn btn-info">Open products list</a><br><br>
 
         @if (session('success'))
             <p style="color:green">{{ session('success') }}</p>
