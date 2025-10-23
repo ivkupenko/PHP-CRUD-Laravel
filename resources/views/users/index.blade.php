@@ -3,7 +3,9 @@
 @section('content')
     <div class="container w-100">
         <h1>Users list</h1>
-        <a href="{{ route('users.create') }}" class="btn btn-primary">Register new user</a><br><br>
+        <a href="{{ route('users.create') }}" class="btn btn-primary">Register new user</a>
+
+        <a href="{{ route('products.index') }}" class="btn btn-info">Open products list</a><br><br>
 
         @if (session('success'))
             <p style="color:green">{{ session('success') }}</p>
@@ -42,7 +44,7 @@
                         <td>{{ $singleUser->phone }}</td>
                         <td>{{ $singleUser->created_at->format('d/m/Y') }}</td>
                         <td>
-                            <form method='post' action='{{ route('users.delete', ['user' => $singleUser]) }}'>
+                            <form method='post' action='{{ route('users.destroy', ['user' => $singleUser]) }}'>
                                 @csrf
                                 @method('delete')
                                 <a href="{{ route('users.edit', ['user' => $singleUser]) }}"
