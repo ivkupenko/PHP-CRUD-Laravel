@@ -16,8 +16,16 @@
                 <input type="text" name="name_filter" value="{{ request('name_filter') }}"
                     class="form-control form-control-sm" placeholder="Search by name" style="max-width: 250px;">
 
+                <input type="text" name="description_filter" value="{{ request('description_filter') }}"
+                    class="form-control form-control-sm" placeholder="Search by description" style="max-width: 250px;">
+
+                <input type="number" name="min_count_filter" value="{{ request('min_count_filter') }}"
+                    class="form-control form-control-sm" placeholder="Min count" style="max-width: 250px;">
+                <input type="number" name="max_count_filter" value="{{ request('max_count_filter') }}"
+                    class="form-control form-control-sm" placeholder="Max count" style="max-width: 250px;">
+
                 <button type="submit" class="btn btn-success btn-sm">Search</button>
-            <a href="{{ route('products.list') }}" class="btn btn-secondary btn-sm">Reset Filter</a>
+                <a href="{{ route('products.list') }}" class="btn btn-secondary btn-sm">Reset Filter</a>
             </form>
         </div>
         <table class="table table-hover">

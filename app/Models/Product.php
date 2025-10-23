@@ -5,7 +5,10 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Lacodix\LaravelModelFilter\Traits\HasFilters;
-use App\Models\Filters\NameFilter;
+use App\Models\Filters\Products\NameFilter;
+use App\Models\Filters\Products\DescriptionFilter;
+use App\Models\Filters\Products\MaxCountFilter;
+use App\Models\Filters\Products\MinCountFilter;
 
 class Product extends Model
 {
@@ -19,5 +22,8 @@ class Product extends Model
 
     protected array $filters = [
         NameFilter::class,
+        DescriptionFilter::class,
+        MaxCountFilter::class,
+        MinCountFilter::class,
     ];
 };
