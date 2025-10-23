@@ -10,25 +10,25 @@ return new class extends Migration
     public function up(): void
     {
         Schema::table('users', function (Blueprint $table) {
-            if (!Schema::hasColumn('users', 'sex_id')) {
-                $table->unsignedTinyInteger('sex_id')->nullable()->after('sex');
+            if (!Schema::hasColumn('users', 'gender_id')) {
+                $table->unsignedTinyInteger('gender_id')->nullable()->after('sex');
             }
         });
 
         DB::table('users')
             ->where('sex', 'male')
-            ->update(['sex_id' => 0]);
+            ->update(['gender_id' => 0]);
 
         DB::table('users')
             ->where('sex', 'female')
-            ->update(['sex_id' => 1]);
+            ->update(['gender_id' => 1]);
     }
 
     public function down(): void
     {
         Schema::table('users', function (Blueprint $table) {
-            if (Schema::hasColumn('users', 'sex_id')) {
-                $table->dropColumn('sex_id');
+            if (Schema::hasColumn('users', 'gender_id')) {
+                $table->dropColumn('gender_id');
             }
         });
     }
