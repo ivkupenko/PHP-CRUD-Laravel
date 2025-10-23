@@ -20,14 +20,14 @@
             <label for="name">Name</label><br>
             <input class="form-control" type="text" name="name" placeholder="Name" id="name" value={{old("name")}}><br>
 
-            <label for="sex_id">Sex:</label>
-            <select id="sex_id" name="sex_id" class="form-control border-secondary">
-                <option value="" disabled selected hidden>Choose your sex</option>
+            <label for="gender_id">Gender:</label>
+            <select id="gender_id" name="gender_id" class="form-control border-secondary">
+                <option value="" disabled selected hidden>Choose your gender</option>
 
-                @foreach (App\Models\Sex::all() as $sex)
-                    <option value="{{ $sex->sex }}"
-                        {{ old('sex_id', $user->sex_id ?? '') == $sex->id ? 'selected' : '' }}>
-                        {{ ucfirst($sex->sex) }}
+                @foreach (App\Models\Gender::all() as $gender)
+                    <option value="{{ $gender->gender }}"
+                        {{ old('gender_id', $user->gender_id ?? '') == $gender->id ? 'selected' : '' }}>
+                        {{ ucfirst($gender->gender) }}
                     </option>
                 @endforeach
             </select><br>

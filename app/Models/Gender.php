@@ -5,9 +5,9 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 
-class Sex extends Model
+class Gender extends Model
 {
-    protected $fillable = ['sex'];
+    protected $fillable = ['gender'];
     protected $primaryKey = 'id';
 
     public function users(): HasMany

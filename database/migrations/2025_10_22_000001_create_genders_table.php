@@ -7,9 +7,9 @@ use Illuminate\Support\Facades\Schema;
 return new class extends Migration {
     public function up(): void
     {
-        Schema::create('sexes', function (Blueprint $table) {
+        Schema::create('genders', function (Blueprint $table) {
             $table->unsignedTinyInteger('id')->primary();
-            $table->string('sex');
+            $table->string('gender');
         });
     }
 
