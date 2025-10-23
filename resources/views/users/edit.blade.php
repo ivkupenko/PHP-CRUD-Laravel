@@ -23,13 +23,17 @@
             <input class="form-control border-secondary" type="text" id="name" name="name"
                 value="{{ old('user', $user->name) }}"><br>
 
-            <label>Sex</label><br>
-            <input type="radio" name="sex" id="sex_male" value="male"
-                {{ old('sex == "male" ? "checked" : ""', $user->sex == 'male' ? 'checked' : '') }}>
-            <label for="sex_male">Male</label>
-            <input type="radio" name="sex" id="sex_female" value="female"
-                {{ old('sex == "female" ? "checked" : ""', $user->sex == 'female' ? 'checked' : '') }}>
-            <label for="sex_female">Female</label><br><br>
+            <label for="sex_id">Sex:</label>
+            <select id="sex_id" name="sex_id" class="form-control border-secondary">
+                <option value="" disabled selected hidden>Choose your sex</option>
+
+                @foreach (App\Models\Sex::all() as $sex)
+                    <option value="{{ $sex->sex }}"
+                        {{ old('sex_id', $user->sex_id ?? '') == $sex->id ? 'selected' : '' }}>
+                        {{ ucfirst($sex->sex) }}
+                    </option>
+                @endforeach
+            </select><br>
 
             <label for="email">Email</label><br>
             <input class="form-control border-secondary" type="text" id="email" name="email"

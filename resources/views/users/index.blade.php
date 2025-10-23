@@ -12,10 +12,10 @@
         @endif
 
         <form method="GET" action="{{ route('users.index') }}" class="mb-3 d-flex align-items-center gap-2">
-            <select name="sex_filter" class="form-select form-select-sm w-auto d-inline">
+            <select name="sex_id_filter" class="form-select form-select-sm w-auto d-inline">
                 <option value="">All sexes</option>
-                <option value="male" {{ request('sex_filter') == 'male' ? 'selected' : '' }}>Male</option>
-                <option value="female" {{ request('sex_filter') == 'female' ? 'selected' : '' }}>Female</option>
+                <option value="0" {{ request('sex_id_filter') == '0' ? 'selected' : '' }}>Male</option>
+                <option value="1" {{ request('sex_id_filter') == '1' ? 'selected' : '' }}>Female</option>
             </select>
             <button type="submit" class="btn btn-success btn-sm">Filter</button>
             <a href="{{ route('users.index') }}" class="btn btn-secondary btn-sm">Reset Filter</a>
@@ -38,7 +38,7 @@
                 @foreach ($users as $singleUser)
                     <tr>
                         <td>{{ $singleUser->name }}</td>
-                        <td>{{ $singleUser->sex }}</td>
+                        <td>{{ ucfirst($singleUser->sex->sex ?? '-') }}</td>
                         <td>{{ $singleUser->email }}</td>
                         <td>{{ $singleUser->location }}</td>
                         <td>{{ $singleUser->phone }}</td>

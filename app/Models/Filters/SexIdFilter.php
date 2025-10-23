@@ -5,16 +5,16 @@ namespace App\Models\Filters;
 use Lacodix\LaravelModelFilter\Filters\SelectFilter;
 use Lacodix\LaravelModelFilter\Enums\FilterMode;
 
-class SexFilter extends SelectFilter
+class SexIdFilter extends SelectFilter
 {
     public FilterMode $mode = FilterMode::EQUAL;
-    protected string $field = 'sex';
+    protected string $field = 'sex_id';
 
     public function options(): array
     {
         return [
-            'male' => 'male',
-            'female' => 'female',
+            '0' => '0',
+            '1' => '1',
         ];
     }
 }
