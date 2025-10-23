@@ -12,7 +12,7 @@
                 <p style="color:green">{{ session('success') }}</p>
             @endif
 
-            <form method="GET" action="{{ route('products.list') }}" class="mb-3 d-flex align-items-center gap-2">
+            <form method="GET" action="{{ route('products.index') }}" class="mb-3 d-flex align-items-center gap-2">
                 <input type="text" name="name_filter" value="{{ request('name_filter') }}"
                     class="form-control form-control-sm" placeholder="Search by name" style="max-width: 250px;">
 
@@ -25,7 +25,7 @@
                     class="form-control form-control-sm" placeholder="Max count" style="max-width: 250px;">
 
                 <button type="submit" class="btn btn-success btn-sm">Search</button>
-                <a href="{{ route('products.list') }}" class="btn btn-secondary btn-sm">Reset Filter</a>
+                <a href="{{ route('products.index') }}" class="btn btn-secondary btn-sm">Reset Filter</a>
             </form>
         </div>
         <table class="table table-hover">
@@ -45,7 +45,7 @@
                         <td>{{ $singleProduct->description }}</td>
                         <td>{{ $singleProduct->count }}</td>
                         <td>
-                            <form method='post' action='{{ route('products.delete', ['product' => $singleProduct]) }}'>
+                            <form method='post' action='{{ route('products.destroy', ['product' => $singleProduct]) }}'>
                                 @csrf
                                 @method('delete')
                                 <a href="{{ route('products.edit', ['product' => $singleProduct]) }}"
