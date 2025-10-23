@@ -25,7 +25,7 @@ class UserController extends Controller
     {
         User::create($request->validated());
 
-        return redirect(route('users.index'));
+        return redirect(route('users.index'))->with('success', 'User registered successfuly!');;
     }
 
     public function edit(User $user)
