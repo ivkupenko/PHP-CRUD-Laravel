@@ -5,7 +5,7 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\ProductController;
 
 Route::get('/', function () {
-    return redirect(route('users.index'));
+    return view('welcome');
 });
 
 Route::resource('users', UserController::class);
