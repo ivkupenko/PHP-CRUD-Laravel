@@ -28,7 +28,7 @@ protected function prepareForValidation(): void
 
         return [
             'name' => 'required|max:255',
-            'gender_id' => 'required|in:0,1',
+            'gender_id' => 'required|integer|exists:genders,id',
             'email' => ['required', 'email', 'max:255', Rule::unique('users')->ignore($user->id)],
             'location' => 'required|max:255',
             'phone' => 'required|max:255',

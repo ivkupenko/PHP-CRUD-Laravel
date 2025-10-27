@@ -24,7 +24,7 @@
             <select id="gender_id" name="gender_id" class="form-control border-secondary">
                 <option value="" disabled selected hidden>Choose your gender</option>
 
-                @foreach (App\Models\Gender::all() as $gender)
+                @foreach ($genders as $gender)
                     <option value="{{ $gender->gender }}"
                         {{ old('gender_id', $user->gender_id ?? '') == $gender->id ? 'selected' : '' }}>
                         {{ ucfirst($gender->gender) }}
