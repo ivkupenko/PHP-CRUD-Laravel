@@ -9,11 +9,9 @@ class StoreUserDataRequest extends FormRequest
 {
     protected function prepareForValidation(): void
     {
-        $map = Gender::query()->orderBy('id')->pluck('id', 'gender')->toArray();
-
-        if (isset($this->gender_id) && array_key_exists($this->gender_id, $map)) {
+        if (isset($this->gender_id)) {
             $this->merge([
-                'gender_id' => $map[$this->gender_id],
+                'gender_id' => [$this->gender_id],
             ]);
         }
     }

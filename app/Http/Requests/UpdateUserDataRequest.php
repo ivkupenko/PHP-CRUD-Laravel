@@ -10,14 +10,9 @@ class UpdateUserDataRequest extends FormRequest
 {
 protected function prepareForValidation(): void
     {
-        $map = [
-            'male' => 0,
-            'female' => 1,
-        ];
-
-        if (isset($this->gender_id) && array_key_exists($this->gender_id, $map)) {
+        if (isset($this->gender_id)) {
             $this->merge([
-                'gender_id' => $map[$this->gender_id],
+                'gender_id' => [$this->gender_id],
             ]);
         }
     }
