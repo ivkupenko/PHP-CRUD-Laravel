@@ -2,19 +2,18 @@
 
 namespace App\Models\Filters;
 
+use App\Models\Gender;
 use Lacodix\LaravelModelFilter\Filters\SelectFilter;
 use Lacodix\LaravelModelFilter\Enums\FilterMode;
 
-class SexFilter extends SelectFilter
+class GenderIdFilter extends SelectFilter
 {
     public FilterMode $mode = FilterMode::EQUAL;
-    protected string $field = 'sex';
+    protected string $field = 'gender_id';
 
     public function options(): array
     {
-        return [
-            'male' => 'male',
-            'female' => 'female',
-        ];
+        return Gender::query()->orderBy('id')->pluck('id', 'gender')->toArray();
+
     }
 }

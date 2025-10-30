@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Gender;
 use Illuminate\Http\Request;
 use App\Models\User;
 use App\Http\Requests\StoreUserDataRequest;
@@ -18,14 +19,15 @@ class UserController extends Controller
 
     public function create()
     {
-        return view('users.create');
+        $genders = Gender::all();
+        return view('users.create', ['genders' => $genders]);
     }
 
     public function store(StoreUserDataRequest $request)
     {
         User::create($request->validated());
 
-        return redirect(route('users.index'));
+        return redirect(route('users.index'))->with('success', 'User registered successfuly!');
     }
 
     public function edit(User $user)
