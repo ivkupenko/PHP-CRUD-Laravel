@@ -16,6 +16,10 @@ class UpdateProductsRequest extends FormRequest
             'name' => ['required', 'string', 'max:255', Rule::unique('products')->ignore($product->id)],
             'description' => 'required|max:255',
             'count' => 'required|numeric|min:0',
+
+            'attributes' => 'nullable|array',
+            'attributes.*' => 'array',
+            'attributes.*.*' => 'integer|exists:attribute_values,id',
         ];
     }
 }

@@ -12,6 +12,10 @@ class StoreProductsRequest extends FormRequest
             'name' => 'required|max:255|unique:products',
             'description' => 'required|max:255',
             'count' => 'required|numeric|min:0',
+
+            'attributes' => 'nullable|array',
+            'attributes.*' => 'array',
+            'attributes.*.*' => 'integer|exists:attribute_values,id',
         ];
     }
 }
