@@ -7,6 +7,8 @@ use Illuminate\Database\Seeder;
 use Database\Seeders\GendersSeeder;
 use Database\Seeders\UsersSeeder;
 use Database\Seeders\ProductsSeeder;
+use Database\Seeders\AttributesSeeder;
+use Database\Seeders\AttributeValuesSeeder;
 
 class DatabaseSeeder extends Seeder
 {
@@ -18,6 +20,8 @@ class DatabaseSeeder extends Seeder
             GendersSeeder::class,
             UsersSeeder::class,
             ProductsSeeder::class,
+            AttributesSeeder::class,
+            AttributeValuesSeeder::class,
         ]);
     }
 }
