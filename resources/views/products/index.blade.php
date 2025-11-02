@@ -34,6 +34,7 @@
                     <th>Name:</th>
                     <th>Description:</th>
                     <th>Count:</th>
+                    <th>Attributes:</th>
                     <th>Actions:</th>
                 </tr>
             </thead>
@@ -44,6 +45,13 @@
                         <td>{{ $singleProduct->name }}</td>
                         <td>{{ $singleProduct->description }}</td>
                         <td>{{ $singleProduct->count }}</td>
+                        <td>
+                            @foreach ($singleProduct->attributeValues as $attrValue)
+                                <span class="badge bg-secondary">
+                            {{ $attrValue->attribute->name }}: {{ $attrValue->value }}
+                        </span>
+                            @endforeach
+                        </td>
                         <td>
                             <form method='post' action='{{ route('products.destroy', ['product' => $singleProduct]) }}'>
                                 @csrf
