@@ -12,9 +12,7 @@ class UpdateUserDataRequest extends FormRequest
     protected function prepareForValidation(): void
     {
         if (isset($this->gender_id)) {
-            $genderId = Gender::where('gender', $this->gender_id)->value('id');
-
-            $this->merge(['gender_id' => $genderId]);
+            $this->merge(['gender_id' => $this->gender_id]);
         }
     }
 
