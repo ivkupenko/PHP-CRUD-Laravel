@@ -10,3 +10,5 @@ Route::get('/', function () {
 
 Route::resource('users', UserController::class);
 Route::resource('products', ProductController::class);
+
+Route::get('/products/{product}', [ProductController::class, 'show'])->name('products.show');

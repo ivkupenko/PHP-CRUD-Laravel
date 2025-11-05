@@ -69,7 +69,8 @@ class ProductController extends Controller
         return redirect(route('products.index'))->with('success', 'Product deleted!');
     }
 
-    private function syncProductAttributes(Product $product, array $attributes = null){
+    private function syncProductAttributes(Product $product, array $attributes = null)
+    {
         $product->attributeValues()->detach();
 
         if (empty($attributes)) {
@@ -83,5 +84,12 @@ class ProductController extends Controller
                 ]);
             }
         }
+    }
+
+    public function show(Product $product)
+    {
+        $product->load('attributeValues.attribute');
+        return view('products.show', ['product' => $product]);
+
     }
 }
