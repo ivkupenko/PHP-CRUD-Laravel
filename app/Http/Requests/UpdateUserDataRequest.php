@@ -2,18 +2,17 @@
 
 namespace App\Http\Requests;
 
+use App\Models\Gender;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\Rule;
 
 
 class UpdateUserDataRequest extends FormRequest
 {
-protected function prepareForValidation(): void
+    protected function prepareForValidation(): void
     {
         if (isset($this->gender_id)) {
-            $this->merge([
-                'gender_id' => [$this->gender_id],
-            ]);
+            $this->merge(['gender_id' => $this->gender_id]);
         }
     }
 

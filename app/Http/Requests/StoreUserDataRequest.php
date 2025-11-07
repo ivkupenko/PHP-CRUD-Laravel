@@ -10,9 +10,7 @@ class StoreUserDataRequest extends FormRequest
     protected function prepareForValidation(): void
     {
         if (isset($this->gender_id)) {
-            $this->merge([
-                'gender_id' => [$this->gender_id],
-            ]);
+            $this->merge(['gender_id' => $this->gender_id]);
         }
     }
 
